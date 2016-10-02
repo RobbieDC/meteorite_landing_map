@@ -5,18 +5,11 @@ var Map = function(center, zoom) {
     zoom: zoom 
   })
 
-  this.addMarker = function(latLng) {
+  this.addMarker = function(lat, lng) {
     var marker = new google.maps.Marker({
-      position: latLng,
+      position: new google.maps.LatLng(lat, lng),
       map: this.googleMap
     });
-  }
-
-  this.addClickEvent = function() {
-    google.maps.event.addListener(this.googleMap, 'click', function(event) {
-      var position = {lat: event.latLng.lat(), lng: event.latLng.lng()}
-      this.addMarker(position)
-    }.bind(this));
   }
 
 }
